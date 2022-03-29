@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fruitsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+}
+
+.fruit{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fruit button{
+    padding: .4rem .8rem;
+}
+
+.account{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+.aProduct{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    align-items: center;
+    width: 90%;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.amount{
+    background-color: aqua;
+    border-radius: 50%;
+    padding: .2rem .5rem;
+}
