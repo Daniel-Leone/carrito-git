@@ -10,30 +10,30 @@
 <body>
 
     <div class="fruitsContainer">
-        <article class="fruit">
-            <p class="fruitName">Banana</p>
-            <p class="fruitPrice">$300</p>
-            <button type="submit" data-fruit="banana">Agregar</button>
-        </article>
-        <article class="fruit">
-            <p class="fruitName">Banana</p>
-            <p class="fruitPrice">$300</p>
-            <button type="submit" data-fruit="banana">Agregar</button>
-        </article>
-        <article class="fruit">
-            <p class="fruitName">Banana</p>
-            <p class="fruitPrice">$300</p>
-            <button type="submit" data-fruit="banana">Agregar</button>
-        </article>
+        <!-- Acá agregamos de forma dinámica cada fruta desde JS -->
+        <!-- Here we add every fruit from JS -->
     </div>
 
+    <template class="individualFruit">
+        <article class="fruit">
+            <p class="fruitName">Banana</p>
+            <p class="fruitPrice">$300</p>
+            <button type="submit">Agregar</button>
+        </article>
+    </template>
+
     <div class="account">
+        <!-- Acá vamos agregando los productos al carrito -->
+        <!-- Here we add the products in the cart -->
+    </div>
+
+    <template class="templateAccount">
         <article class="aProduct">
             <p class="fruitSelected">Banana</p>
             <p class="amount">1</p>
             <p class="currentPrice">$300</p>
         </article>
-    </div>
+    </template>
     
     <script src="main.js"></script>
 </body>
