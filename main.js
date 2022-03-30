@@ -6,6 +6,10 @@ const fruit = document.querySelector('.individualFruit');
 
 const fruitsContainer = document.querySelector('.fruitsContainer');
 
+const templateCart = document.querySelector('.templateAccount')
+
+const HTMLCart = document.querySelector('.account');
+
 const cart = []
 
 const fruits = [
@@ -31,6 +35,8 @@ const fruits = [
     }
 ]
 
+// PRODUCTOS PINTADOS DE FORMA DINÁMICA
+
 fruits.forEach( (f)=>{
     const clone = fruit.content.firstElementChild.cloneNode(true);
 
@@ -38,7 +44,6 @@ fruits.forEach( (f)=>{
     clone.querySelector('.fruitPrice').textContent = '$' + f.price;
 
     clone.querySelector('button').addEventListener('click', ()=>{
-        console.log(f.name + 'ejecutado');
 
         const index = cart.findIndex( (item) => item.id === f.id );
 
@@ -47,11 +52,29 @@ fruits.forEach( (f)=>{
         } else {
             cart[index].quantity++;
         }
-
-        console.log(cart);
+        printCart(cart);
     })
 
     fragmentProduct.appendChild(clone)
 } )
 
 fruitsContainer.appendChild(fragmentProduct)
+
+// FINAL DEL PINTADO DE PRODUCTOS
+
+
+
+const printCart = (arrayCart)=>{
+    HTMLCart.textContent = '';
+
+    arrayCart.forEach( (p)=>{
+        const clone = templateCart.content.firstElementChild.cloneNode(true);
+
+        clone.querySelector('.fruitSelected').textContent = p.name;
+        clone.querySelector('.amount').textContent = p.quantity;
+        clone.querySelector('.currentPrice').textContent = '$' + p.price;
+
+        fragmentCart.appendChild(clone)
+    } )
+    HTMLCart.appendChild(fragmentCart)
+}
