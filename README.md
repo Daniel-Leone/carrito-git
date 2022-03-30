@@ -12,4 +12,8 @@ cree el carrito funcional en consola, solo modificando la cantidad y no el preci
 
 ## commit #4
 
-el carrito ya funciona en el DOM 😃
+el carrito ya funciona en el DOM pero sin los precios😃
+
+## commit #5
+
+Agregado el precio individual y el subtotal, solo faltaría el total.

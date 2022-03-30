@@ -17,21 +17,21 @@ const fruits = [
         id: 1,
         name : 'Banana 🍌',
         price : 300,
-        quantity : 1
+        quantity : 1,
     },
 
     {
         id: 2,
         name : 'Manzana 🍏',
         price : 100,
-        quantity : 1
+        quantity : 1,
     },
 
     {
         id: 3,
         name : 'Sandía 🍉',
         price : 200,
-        quantity : 1
+        quantity : 1,
     }
 ]
 
@@ -51,8 +51,11 @@ fruits.forEach( (f)=>{
             cart.push(f)
         } else {
             cart[index].quantity++;
+            f.subtotal = cart[index].price * f.quantity;
+            // console.log(cart[index].price * f.quantity);
         }
         printCart(cart);
+        console.log(cart);
     })
 
     fragmentProduct.appendChild(clone)
@@ -72,7 +75,8 @@ const printCart = (arrayCart)=>{
 
         clone.querySelector('.fruitSelected').textContent = p.name;
         clone.querySelector('.amount').textContent = p.quantity;
-        clone.querySelector('.currentPrice').textContent = '$' + p.price;
+        clone.querySelector('.currentPrice').textContent = 'precio: $' + (p.price);
+        clone.querySelector('.currentSubTotal').textContent = 'subtotal: $' + (p.price * p.quantity);
 
         fragmentCart.appendChild(clone)
     } )
