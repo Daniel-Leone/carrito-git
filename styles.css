@@ -25,6 +25,17 @@
 
 .fruit button{
     padding: .4rem .8rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: transparent;
+    transition: .2s;
+}
+
+.fruit button:hover{
+    cursor: pointer;
+    background-color: grey;
+    color: #fff;
+    border-color: grey;
 }
 
 .account{
@@ -33,21 +44,75 @@
     width: 60vw;
     margin: auto;
     margin-top: 5rem;
+    align-items: center;
 }
 
 .aProduct{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: .5rem 1rem;
-    align-items: center;
+    flex-direction: column;
     width: 90%;
     border: 1px solid grey;
     border-radius: 5px;
+    margin: .2rem;
 }
 
 .amount{
     background-color: aqua;
     border-radius: 50%;
     padding: .2rem .5rem;
+}
+
+.fruitAndQuantity{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: grey;
+    align-items: center;
+    padding: .5rem;
+}
+
+.priceAndButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+}
+
+.increase, .decrease{
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    transition: .2s;
+}
+
+.increase{
+    background-color: rgb(5, 209, 5);
+}
+
+.decrease{
+    background-color: red;
+}
+
+.increase:hover{
+    cursor: pointer;
+    background-color: green;
+}
+
+.decrease:hover{
+    cursor: pointer;
+    background-color: rgb(166, 0, 0);
+}
+
+.footer{
+    display: none;
+    flex-direction: row;
+    margin: auto;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 54vw;
+    padding: .5rem;
 }

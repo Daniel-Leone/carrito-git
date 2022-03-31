@@ -29,12 +29,26 @@
 
     <template class="templateAccount">
         <article class="aProduct">
-            <p class="fruitSelected">Banana</p>
-            <p class="amount">1</p>
-            <p class="currentPrice">$300</p>
-            <p class="currentSubTotal"></p>
+
+            <div class="fruitAndQuantity">
+                <p class="amount"></p>
+                <p class="fruitSelected" style="margin-left: .5rem"></p>
+            </div>
+
+            <div class="priceAndButtons">
+                <p class="currentPrice"></p>
+                <div>
+                    <button class="decrease">Eliminar</button>
+                    <button class="increase">Agregar</button>
+                </div>
+            </div>
+
         </article>
     </template>
+
+    <footer class="footer">
+        <p>total: <span class="spanTotal"></span> </p>
+    </footer>
     
     <script src="main.js"></script>
 </body>

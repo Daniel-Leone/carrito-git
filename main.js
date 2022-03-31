@@ -10,28 +10,40 @@ const templateCart = document.querySelector('.templateAccount')
 
 const HTMLCart = document.querySelector('.account');
 
-const cart = []
+document.addEventListener('click', (e)=>{
+    // console.log(e.target.matches('.priceAndButtons div .decrease'));
+
+    if(e.target.matches('.priceAndButtons div .increase')){
+        btnIncrease(e)
+    }
+
+    if(e.target.matches('.priceAndButtons div .decrease')){
+        btnDecrease(e)
+    }
+})
+
+let cart = []
 
 const fruits = [
     {
         id: 1,
         name : 'Banana 🍌',
         price : 300,
-        quantity : 1,
+        quantity : 1
     },
 
     {
         id: 2,
         name : 'Manzana 🍏',
         price : 100,
-        quantity : 1,
+        quantity : 1
     },
 
     {
         id: 3,
         name : 'Sandía 🍉',
         price : 200,
-        quantity : 1,
+        quantity : 1
     }
 ]
 
@@ -49,13 +61,15 @@ fruits.forEach( (f)=>{
 
         if(index === -1){
             cart.push(f)
+            document.querySelector('footer').style.display = 'flex'
         } else {
             cart[index].quantity++;
-            f.subtotal = cart[index].price * f.quantity;
             // console.log(cart[index].price * f.quantity);
         }
         printCart(cart);
-        console.log(cart);
+        // console.log(cart);
+
+        // console.log(f.price);
     })
 
     fragmentProduct.appendChild(clone)
@@ -65,8 +79,6 @@ fruitsContainer.appendChild(fragmentProduct)
 
 // FINAL DEL PINTADO DE PRODUCTOS
 
-
-
 const printCart = (arrayCart)=>{
     HTMLCart.textContent = '';
 
@@ -75,10 +87,45 @@ const printCart = (arrayCart)=>{
 
         clone.querySelector('.fruitSelected').textContent = p.name;
         clone.querySelector('.amount').textContent = p.quantity;
-        clone.querySelector('.currentPrice').textContent = 'precio: $' + (p.price);
-        clone.querySelector('.currentSubTotal').textContent = 'subtotal: $' + (p.price * p.quantity);
+        clone.querySelector('.currentPrice').textContent = 'precio: $' + (p.price * p.quantity);
 
+        clone.querySelector('.decrease').dataset.id = p.name;
+        clone.querySelector('.increase').dataset.id = p.name;
+
+        // console.log(clone.querySelector('.increase'));
+        
+        document.querySelector('.spanTotal').textContent = ''
+        
         fragmentCart.appendChild(clone)
     } )
     HTMLCart.appendChild(fragmentCart)
+}
+
+const btnIncrease = (e)=>{
+    // console.log('sumaste', e.target);
+
+    cart = cart.map(item =>{
+        console.log(item);
+        if(item.name == e.target.dataset.id){
+            item.quantity++
+        }
+        return item
+    })
+
+    printCart(cart);
+}
+
+const btnDecrease = (e)=>{
+    // console.log('restaste', e.target.dataset.id);
+
+    cart = cart.filter(item =>{
+        if(item.name === e.target.dataset.id){
+            if(item.quantity > 0){
+                item.quantity--                
+            } if(item.quantity === 0) return
+            return item
+        } else {return item}
+    })
+
+    printCart(cart);
 }
