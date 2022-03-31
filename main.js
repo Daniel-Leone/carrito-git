@@ -1,14 +1,11 @@
 const fragmentProduct = document.createDocumentFragment();
-
 const fragmentCart = document.createDocumentFragment();
-
 const fruit = document.querySelector('.individualFruit');
-
 const fruitsContainer = document.querySelector('.fruitsContainer');
-
 const templateCart = document.querySelector('.templateAccount')
-
 const HTMLCart = document.querySelector('.account');
+const footer = document.querySelector('.footer');
+const footerTemplate = document.querySelector('.footerTemplate');
 
 document.addEventListener('click', (e)=>{
     // console.log(e.target.matches('.priceAndButtons div .decrease'));
@@ -44,6 +41,20 @@ const fruits = [
         name : 'Sandía 🍉',
         price : 200,
         quantity : 1
+    },
+
+    {
+        id: 4,
+        name : 'Pera 🍐',
+        price : 80,
+        quantity : 1
+    },
+
+    {
+        id: 5,
+        name : 'Kiwi 🥝',
+        price : 400,
+        quantity : 1
     }
 ]
 
@@ -62,14 +73,13 @@ fruits.forEach( (f)=>{
         if(index === -1){
             cart.push(f)
             document.querySelector('footer').style.display = 'flex'
+            if(f.quantity === 0){
+                f.quantity++
+            }
         } else {
             cart[index].quantity++;
-            // console.log(cart[index].price * f.quantity);
         }
         printCart(cart);
-        // console.log(cart);
-
-        // console.log(f.price);
     })
 
     fragmentProduct.appendChild(clone)
@@ -91,27 +101,45 @@ const printCart = (arrayCart)=>{
 
         clone.querySelector('.decrease').dataset.id = p.name;
         clone.querySelector('.increase').dataset.id = p.name;
-
-        // console.log(clone.querySelector('.increase'));
         
-        document.querySelector('.spanTotal').textContent = ''
+        // document.querySelector('.spanTotal').textContent = ''
         
         fragmentCart.appendChild(clone)
     } )
     HTMLCart.appendChild(fragmentCart)
+
+    if(cart.length === 0){
+        document.querySelector('footer').style.display = 'none'
+    }
+
+    printFooter()
+
+    // console.log(cart);
+}
+
+const printFooter = ()=>{
+    footer.textContent = ""
+    const total = cart.reduce( 
+        (acc, current)=> acc + current.quantity * current.price, 0)
+
+    const clone = footerTemplate.content.cloneNode(true);
+
+    clone.querySelector('.spanTotal').textContent = total;
+
+    footer.appendChild(clone);
 }
 
 const btnIncrease = (e)=>{
     // console.log('sumaste', e.target);
 
     cart = cart.map(item =>{
-        console.log(item);
         if(item.name == e.target.dataset.id){
             item.quantity++
         }
         return item
     })
 
+    printFooter()
     printCart(cart);
 }
 
@@ -127,5 +155,7 @@ const btnDecrease = (e)=>{
         } else {return item}
     })
 
+    printFooter()
+    // console.log(cart);
     printCart(cart);
 }
